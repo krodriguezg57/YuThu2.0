@@ -1,8 +1,5 @@
-
-
 export function pintarDatos(videos){
     let videoContainer = document.querySelector('#ContenedorCanciones')
-
 
     videos.forEach(video => {
     
@@ -19,36 +16,26 @@ export function pintarDatos(videos){
         imagen.classList.add("p-3")
         imagen.src = (video.snippet.thumbnails.high.url)
     
-        let separador = document.createElement("hr")
-        separador.classList.add("w-75")
-        separador.classList.add("mx-auto")
-        separador.classList.add("d-block")
-        separador.classList.add("border")
-        separador.classList.add("text-dark")
-    
-    
+        let cuadroTexto = document.createElement("div")
+        cuadroTexto.classList.add("text-center")
+
         let nombre = document.createElement("h5")
         nombre.classList.add("text-dark")
         nombre.classList.add("fw-bold")
         nombre.classList.add("text-center")
         nombre.textContent = video.snippet.title
+        
+        let nombreCanal = document.createElement("p")
+        nombreCanal.textContent = video.snippet.channelTitle
     
-        let cuadroTexto = document.createElement("div")
-        cuadroTexto.classList.add("text-center")
-    
-        let preview = document.createElement("audio")
-        preview.src = cancion.preview_url
-        preview.setAttribute("controls", "controls")
-    
+        let fechaPublicacion= document.createElement("p")
+        fechaPublicacion.textContent=video.snippet.publishTime
     
         tarjeta.appendChild(imagen)
-        tarjeta.appendChild(separador)
         tarjeta.appendChild(cuadroTexto)
         cuadroTexto.appendChild(nombre)
-        cuadroTexto.appendChild(preview)
-    
-    
-    
+        cuadroTexto.appendChild(nombreCanal)
+        cuadroTexto.appendChild(fechaPublicacion)
         columna.appendChild(tarjeta)
         videoContainer.appendChild(columna)
     
